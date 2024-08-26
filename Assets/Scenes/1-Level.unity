@@ -2124,18 +2124,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 505117459536558675, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
-      propertyPath: ground
-      value: 
-      objectReference: {fileID: 691527178}
-    - target: {fileID: 505117459536558675, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
-      propertyPath: rocket
-      value: 
-      objectReference: {fileID: 1025819241}
     - target: {fileID: 2878956155721715095, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1294189002}
+    - target: {fileID: 5247014287660090283, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 691527178}
+    - target: {fileID: 5247014287660090283, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
+      propertyPath: rocket
+      value: 
+      objectReference: {fileID: 1025819241}
     - target: {fileID: 7085002114349283520, guid: a0e40048bf0fb3d49a13ec4db4ddba59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2250,6 +2250,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714766441667755417, guid: 19bb06eb8dae8264abd1bf631ceebc40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1232107641990034648, guid: 19bb06eb8dae8264abd1bf631ceebc40, type: 3}
       propertyPath: m_Name
       value: ScoreDisplay

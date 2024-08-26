@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71d0f89aa8d9c14988c01a6fda07a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelConsumptionRate: 1
+  fuelConsumptionRate: 5
   maxHealthValue: 100
   maxFuelValue: 100
   hitDamage: 10

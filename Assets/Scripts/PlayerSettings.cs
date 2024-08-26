@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
 {
-    [SerializeField] float fuelConsumptionRate = 1f;
+    [SerializeField] float fuelConsumptionRate = 5f;
     [SerializeField] float maxHealthValue = 100f;
     [SerializeField] float maxFuelValue = 100f;
     [SerializeField] float hitDamage = 10f;

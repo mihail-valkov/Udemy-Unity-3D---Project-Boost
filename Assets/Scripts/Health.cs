@@ -14,9 +14,6 @@ public class Health : MonoBehaviour
     [SerializeField] Material destroyedRocketMaterial; 
     [Range(0, 1)][SerializeField] float explosionSoundVolume = 0.5f;
 
-    CameraShake cameraShake;
-
-
     public int HealthValue
     {
         get { return health; }
@@ -35,7 +32,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        cameraShake = Camera.main.GetComponent<CameraShake>();
+        //cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
     private void KeepScore()
@@ -85,7 +82,7 @@ public class Health : MonoBehaviour
         else
         {
             PlayHitEffect(point);
-            cameraShake.Shake();
+            //cameraShake.Shake();
         }
     }
 
