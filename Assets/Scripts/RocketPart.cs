@@ -8,6 +8,6 @@ public class RocketPart : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        rocketMover.PlaySoundOnCollision(collision);
+        rocketMover.HandleCollision(collision);
     }
 }
