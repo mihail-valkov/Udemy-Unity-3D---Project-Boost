@@ -54,11 +54,13 @@ public class ScoreDisplay : MonoBehaviour
     public void OnRestartLevel()
     {
         GameManager.Instance.RestartLevel();
+        Debug.Log("Next Level");
     }
 
     public void OnNextLevel()
     {
         GameManager.Instance.NextLevel();
+        Debug.Log("Next Level");
     }
 
     private void UpdateHealth(float health)

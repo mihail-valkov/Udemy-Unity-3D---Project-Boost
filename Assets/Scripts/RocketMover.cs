@@ -26,6 +26,7 @@ public class RocketMover : MonoBehaviour
     AudioSource thrustersTopAudio;
 
     public bool ControlsEnabled { get; set; } = true;
+    public bool HasLanded { get; private set; }
 
     void Awake()
     {
@@ -234,6 +235,12 @@ public class RocketMover : MonoBehaviour
 
     public void LandRocket()
     {
+        if (HasLanded)
+        {
+            return;
+        }
+
+        HasLanded = true;
         Debug.Log("Rocket Landed");
         GameManager.Instance.LevelCompleted();
         playerHealth.IsHealthTrackingActive = false;

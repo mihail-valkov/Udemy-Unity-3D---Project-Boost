@@ -9,6 +9,13 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/Assets/TextMesh Pro/
+/Assets/SimpleWorldMaterialTextures/
+/Assets/StarSparrow/
+/Assets/TerrainSampleAssets/
+/Assets/BrokenVector/
+/Assets/3D Models/
+/Assets/TreePackVol.1/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

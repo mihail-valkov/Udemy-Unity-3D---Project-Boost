@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameOver()
     {
-        //reload scene after 2 seconds
+        Debug.Log("Game Over");
         StartCoroutine(DelayLoadGameOverScene());
     }
 
@@ -160,6 +160,10 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            LoadMainMenu();
         }
     }
 

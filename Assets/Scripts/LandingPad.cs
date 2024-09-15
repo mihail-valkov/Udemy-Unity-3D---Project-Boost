@@ -34,6 +34,10 @@ public class LandingPad : MonoBehaviour
 
     void Update()
     {
+        if (rocket.HasLanded)
+        {
+            return;
+        }
         //if rocket is touching the landing pad,and is upright and velocity is less than 1, then land the rocket
         if (rocketTouching && rocket.IsUpright() && rocket.GetVelocity() < 0.05f)
         {

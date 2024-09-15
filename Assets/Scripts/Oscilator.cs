@@ -5,18 +5,21 @@ using UnityEngine;
 public class Oscilator : MonoBehaviour
 {
     [SerializeField] Vector3 movementVector = new Vector3(5f, 0f, 0f);
-    //[SerializeField] float period = 2f;
+    [SerializeField] Vector3 rotationVector = new Vector3(0f, 0f, 0f);
     [SerializeField] float period = 2f;
     [SerializeField] bool isCentered = false; 
 
     float movementFactor;
+    float rotationFactor;
 
     Vector3 startingPos;
+    Vector3 startingRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         startingPos = transform.position;
+        startingRotation = transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Oscilator : MonoBehaviour
         if (isCentered)
         {
             movementFactor = rawSinWave / 2f;
+            //rotationFactor = rawSinWave / 2f;
         }
         else
         {
@@ -39,5 +43,14 @@ public class Oscilator : MonoBehaviour
 
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPos + offset;
+
+        rotationFactor = (rawSinWave) / 2f;
+
+        if (rotationVector != Vector3.zero)
+        {
+            //rotation vector is amount in degrees for each axis 
+            Vector3 rotation = rotationVector * rotationFactor / 36f;
+            transform.Rotate(rotation);
+        }
     }
 }
