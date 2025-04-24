@@ -11,12 +11,13 @@ public class Oscilator : MonoBehaviour
 
     float movementFactor;
     float rotationFactor;
+    bool firstTime = true;
 
     Vector3 startingPos;
     Vector3 startingRotation;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         startingPos = transform.position;
         startingRotation = transform.rotation.eulerAngles;
@@ -44,13 +45,20 @@ public class Oscilator : MonoBehaviour
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPos + offset;
 
-        rotationFactor = (rawSinWave) / 2f;
+        rotationFactor = rawSinWave;
 
         if (rotationVector != Vector3.zero)
         {
             //rotation vector is amount in degrees for each axis 
-            Vector3 rotation = rotationVector * rotationFactor / 36f;
-            transform.Rotate(rotation);
+            Vector3 rotation = rotationVector * rotationFactor;
+            transform.rotation = Quaternion.Euler(startingRotation + rotation);
+
+            //debug print cycles only the frst time the object is created
+            if (firstTime) 
+            { 
+                Debug.Log(gameObject.name + ": Cycles: " + cycles + "; Rotation: " + rotationFactor); 
+                firstTime = false;
+            }
         }
     }
 }

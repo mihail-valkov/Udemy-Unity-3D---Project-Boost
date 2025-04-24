@@ -172,6 +172,31 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void TogglePause()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+
+        Instance.GamePaused = !Instance.GamePaused;
+
+        if (Instance.GamePaused)
+        {
+            //show pause screen
+            SceneManager.LoadScene("99-PauseScreen", LoadSceneMode.Additive);
+        }
+        else
+        {
+            //hide pause screen
+            SceneManager.UnloadSceneAsync("99-PauseScreen");
+        }
+    }
+
     public ScoreKeeper ScoreKeeper
     {
         get
@@ -179,4 +204,6 @@ public class GameManager : MonoBehaviour
             return scoreKeeper;
         }
     }
+
+    public bool GamePaused { get; private set; }
 }

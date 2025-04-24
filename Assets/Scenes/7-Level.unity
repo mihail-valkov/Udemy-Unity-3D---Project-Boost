@@ -332,74 +332,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165554583}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &184241259
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 184241262}
-  - component: {fileID: 184241261}
-  - component: {fileID: 184241260}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &184241260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184241259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &184241261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184241259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &184241262
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184241259}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &184467507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7519186723676371143, guid: a906ec4b15ef0794eb136d6d7b220fde, type: 3}
@@ -536,6 +468,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245767683}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &249028692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 395793807530465391, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_Name
+      value: EventSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788558862664199605, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 791ff9b7be90e3746ae55fca01d141d5, type: 3}
 --- !u!1 &279627718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,9 +2045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f508fed79fb5e44ae4e0bd85d8cbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: -25, y: 0, z: 0}
+  movementVector: {x: -20, y: 0, z: 0}
   rotationVector: {x: 0, y: 0, z: 0}
-  period: 5
+  period: 8
   isCentered: 0
 --- !u!1001 &1224880268
 PrefabInstance:
@@ -3238,7 +3227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 5, y: 10, z: 0}
-  rotationVector: {x: 0, y: 0, z: 0}
+  rotationVector: {x: 0, y: 0, z: -10}
   period: 5
   isCentered: 1
 --- !u!1001 &1793896388
@@ -3444,7 +3433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 0, y: 0, z: 0}
-  rotationVector: {x: 0, y: 0, z: 15}
+  rotationVector: {x: 0, y: 0, z: 5}
   period: 5
   isCentered: 0
 --- !u!1 &1875524338
@@ -3633,9 +3622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f508fed79fb5e44ae4e0bd85d8cbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 15, z: 0}
-  rotationVector: {x: 0, y: 0, z: 15}
-  period: 7
+  movementVector: {x: 5, y: 5, z: 0}
+  rotationVector: {x: 0, y: 0, z: 8}
+  period: 10
   isCentered: 1
 --- !u!1 &2047880158
 GameObject:
@@ -4035,4 +4024,4 @@ SceneRoots:
   - {fileID: 25251131}
   - {fileID: 2047880159}
   - {fileID: 1502171309}
-  - {fileID: 184241262}
+  - {fileID: 249028692}

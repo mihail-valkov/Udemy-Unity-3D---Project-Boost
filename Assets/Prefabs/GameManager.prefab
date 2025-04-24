@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelConsumptionRate: 5
   maxHealthValue: 100
-  maxFuelValue: 100
+  maxFuelValue: 1000
   hitDamage: 10
   isRocketBreakable: 0
 --- !u!114 &8536365759693508402

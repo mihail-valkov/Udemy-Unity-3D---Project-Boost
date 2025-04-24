@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RocketMover : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class RocketMover : MonoBehaviour
     [SerializeField] GameObject topLeftBooster;
     [SerializeField] GameObject topRightBooster;
     [Range(0, 1)][SerializeField] float rocketUpDotThreshold = 0.94f;
+    Vector2 input;
 
     Health playerHealth;
     private bool isCollisionTracking;
@@ -73,24 +76,91 @@ public class RocketMover : MonoBehaviour
     {
         HandleGameTestingKeys();
         PlayFXOnMove();
+        GetInput();
         MoveRocket();
     }
 
     private void HandleGameTestingKeys()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        // if (Input.GetKeyDown(KeyCode.L))
+        // {
+        //     LandRocket();
+        // }
+
+        // if (Input.GetKeyDown(KeyCode.T))
+        // {
+        //     LandingPad lp = FindObjectOfType<LandingPad>();
+        //     if (lp)
+        //     {
+        //         transform.position = new Vector3(lp.transform.position.x, lp.transform.position.y + 3, lp.transform.position.z);
+        //     }
+        // }
+    }
+
+    private void GetInput()
+    {
+        // //determine which input type is used by the user. On Android do not use this method
+        // if (mobileInputUsed || 
+        //     Application.platform == RuntimePlatform.Android || 
+        //     Application.platform == RuntimePlatform.IPhonePlayer)
+        // {
+        //     return;
+        // }
+
+        // float vertical = Input.GetAxis("Vertical");
+        // float horizontal = Input.GetAxis("Horizontal");
+        
+        // input.x = horizontal;
+        // input.y = vertical;
+    }
+
+    public void OnMoveRocket(InputValue value)
+    {
+        // //call the move rocket function with the input value
+        // input = value.Get<Vector2>();
+        // CalibrateInput();
+    }
+
+    public void OnMoveUpDown(InputValue value)
+    {
+        //call the move rocket function with the input value
+        var inputLeftRight = value.Get<Vector2>();
+        input.y = inputLeftRight.y;
+        CalibrateInput();
+    }
+
+    public void OnMoveLeftRight(InputValue value)
+    {
+        //call the move rocket function with the input value
+        var inputLeftRight = value.Get<Vector2>();
+        input.x = inputLeftRight.x;
+        CalibrateInput();
+    }
+
+    private void CalibrateInput()
+    {
+        float inputThreshold = 0.01f;
+        if (input.x > inputThreshold || input.x < -inputThreshold)
         {
-            LandRocket();
+            //apply easing to the horizontal input to make it less sensitive
+            //input.x = /*MathF.Sign(input.x) **/ MathF.Pow(input.x, 3);
+        }
+        else
+        {
+            input.x = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (input.y > inputThreshold || input.y < -inputThreshold)
         {
-            LandingPad lp = FindObjectOfType<LandingPad>();
-            if (lp)
-            {
-                transform.position = new Vector3(lp.transform.position.x, lp.transform.position.y + 3, lp.transform.position.z);
-            }
+            //apply easing to the horizontal input to make it less sensitive
+            //input.y = MathF.Pow(input.y, 3); // * MathF.Sign(input.y);
         }
+        else
+        {
+            input.y = 0;
+        }
+
+        Debug.Log("Input: " + input);
     }
 
     private void MoveRocket()
@@ -101,30 +171,40 @@ public class RocketMover : MonoBehaviour
         }
 
         //count the seconds when there is vertical or horizontal input to take fuel accordingly
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        if (input.y != 0 || input.x != 0)
         {
-            playerHealth.TakeFuel(GameManager.Instance.PlayerSettings.FuelConsumptionRate * Time.deltaTime);
+            float fuelConsumptionRate = GameManager.Instance.PlayerSettings.FuelConsumptionRate * Time.deltaTime;
+            float inputMagnitude = input.magnitude;
+            playerHealth.TakeFuel(fuelConsumptionRate * inputMagnitude);
         }
 
-        if (Input.GetAxis("Vertical") < 0)
+        if (input.y < 0)
         {
-            verticalBoost = Input.GetAxis("Vertical") * verticalBoostAmount * Time.deltaTime * 10 * 0.5f;
+            verticalBoost = input.y * verticalBoostAmount * Time.deltaTime * 10 * 0.5f;
             topLeftBooster.transform.localRotation = Quaternion.Euler(45, 90, 0);
             topRightBooster.transform.localRotation = Quaternion.Euler(45, -90, 0);
         }
         else
         {
-            verticalBoost = Input.GetAxis("Vertical") * verticalBoostAmount * Time.deltaTime * 10;
+            verticalBoost = input.y * verticalBoostAmount * Time.deltaTime * 10;
             topLeftBooster.transform.localRotation = Quaternion.Euler(-28, 90, 0);
             topRightBooster.transform.localRotation = Quaternion.Euler(-28, -90, 0);
         }
 
-        horizontalBoost = Input.GetAxis("Horizontal") * horizontalBoostAmount * Time.deltaTime * 10;
+        horizontalBoost = input.x * horizontalBoostAmount * Time.deltaTime * 10;
 
         //apply force to rocket
-        rbBody.AddRelativeForce(Vector3.up * verticalBoost);
-        rbTop.AddRelativeForce(Vector3.right * horizontalBoost);
+        if (verticalBoost != 0)
+        {
+            rbBody.AddRelativeForce(Vector3.up * verticalBoost);
+        }
+
+        if (horizontalBoost != 0)
+        {
+            rbTop.AddRelativeForce(Vector3.right * horizontalBoost);
+        }
     }
+
 
     private void PlayFXOnMove()
     {
@@ -139,15 +219,14 @@ public class RocketMover : MonoBehaviour
         }
 
         //play audio when moving
-        if (Input.GetAxis("Vertical") > 0)
+        if (input.y > 0)
         {
             if (!thrustersAudio.isPlaying)
                 thrustersAudio.Play();
             if (!mainBoosterParticles.isPlaying)
                 mainBoosterParticles.Play();
         }
-        else 
-        if (Input.GetAxis("Vertical") == 0)
+        else if (input.y == 0)
         {
             if (thrustersAudio.isPlaying)
                 thrustersAudio.Stop();
@@ -156,7 +235,6 @@ public class RocketMover : MonoBehaviour
                 mainBoosterParticles.Stop();
         }
         else
-        //if (Input.GetAxis("Vertical") < 0)
         {
             if (!thrustersAudio.isPlaying)
                 thrustersAudio.Play();
@@ -168,18 +246,16 @@ public class RocketMover : MonoBehaviour
                 leftBoosterParticles.Play();
         }
 
-        var horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput != 0)
+        if (input.x != 0)
         {
             if (!thrustersTopAudio.isPlaying)
                 thrustersTopAudio.Play();
 
-            if (horizontalInput < 0)
+            if (input.x < 0)
             {
                 leftBoosterParticles.Stop();
                 if (!rightBoosterParticles.isPlaying)
                     rightBoosterParticles.Play();
-
             }
             else
             {
@@ -188,7 +264,7 @@ public class RocketMover : MonoBehaviour
                     leftBoosterParticles.Play();
             }
         }
-        else if (Input.GetAxis("Vertical") >= 0)
+        else if (input.y >= 0)
         {
             if (thrustersTopAudio.isPlaying)
                 thrustersTopAudio.Stop();

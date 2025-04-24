@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/7-Level.unity
     guid: e9731594381b0dc4692ce44f86b8c131
   - enabled: 1
-    path: Assets/Scenes/9-GameOverScreen.unity
+    path: Assets/Scenes/98-GameOverScreen.unity
     guid: b5f635bac6c1430449e14a865cc80163
+  - enabled: 1
+    path: Assets/Scenes/99-PauseScreen.unity
+    guid: 8b3cc26fe5d7853488e24326d90ea77b
   m_configObjects: {}

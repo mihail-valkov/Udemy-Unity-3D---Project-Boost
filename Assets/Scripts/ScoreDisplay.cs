@@ -63,6 +63,11 @@ public class ScoreDisplay : MonoBehaviour
         Debug.Log("Next Level");
     }
 
+    public void OnPause()
+    {
+        GameManager.Instance.TogglePause();
+    }
+
     private void UpdateHealth(float health)
     {
         //display life in % of maxLifeValue on the health slider
